@@ -49,7 +49,7 @@ class GenusNote
 
     public function __toString()
     {
-        return $this->note;
+        return (string) $this->note;
     }
 
     public function getUsername()

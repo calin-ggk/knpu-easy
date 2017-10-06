@@ -44,7 +44,7 @@ class GenusScientist
 
     public function __toString()
     {
-        return $this->getGenus()->__toString();
+        return (string) $this->getUser();
     }
 
     public function getId()

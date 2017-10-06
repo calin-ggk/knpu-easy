@@ -98,7 +98,7 @@ class User implements UserInterface
 
     public function __toString()
     {
-        return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+        return (string) $this->getFullName() ? $this->getFullName() : $this->getEmail();
     }
 
     public function getId()
