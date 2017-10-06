@@ -42,6 +42,11 @@ class GenusScientist
      */
     private $yearsStudied;
 
+    public function __toString()
+    {
+        return $this->getGenus()->__toString();
+    }
+
     public function getId()
     {
         return $this->id;

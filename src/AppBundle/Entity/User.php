@@ -96,6 +96,10 @@ class User implements UserInterface
         $this->studiedGenuses = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return sprintf('%s %s', $this->getFirstName(), $this->getLastName());
+    }
 
     public function getId()
     {

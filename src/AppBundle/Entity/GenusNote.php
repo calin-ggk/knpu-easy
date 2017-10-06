@@ -47,6 +47,11 @@ class GenusNote
      */
     private $genus;
 
+    public function __toString()
+    {
+        return $this->note;
+    }
+
     public function getUsername()
     {
         return $this->username;
