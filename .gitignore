@@ -15,5 +15,5 @@
 /vendor/
 /web/bundles/
 /.idea/
-data.db3
-
+/data.db3
+/.DS_Store
