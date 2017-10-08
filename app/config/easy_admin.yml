@@ -7,7 +7,11 @@ easy_admin:
       field_id: admin/fields/_id.html.twig
 
   assets:
-    css: ['css/custom_backend.css']
+    css:
+      - 'css/custom_backend.css'
+    js:
+      - 'https://unpkg.com/snarkdown@1.2.2/dist/snarkdown.umd.js'
+      - 'js/custom_backend.js'
 
   list:
     title: List of %%entity_label%%
@@ -36,7 +40,7 @@ easy_admin:
           - { property: id, type_options: { disabled: true }}
           - name
           - speciesCount
-          - { property: funFact, type: textarea }
+          - { property: funFact, type: textarea, css_class: js-markdown-input }
           - isPublished
           - { property: firstDiscoveredAt, type_options: { widget: single_text }}
           - { property: subFamily, type: easyadmin_autocomplete }
