@@ -21,8 +21,8 @@ easy_admin:
       list:
         help: Do not feed!
         actions:
-          - {name: edit, icon: pencil, label:EditZ}
-          - {name: show, icon: info-circle, label: ''}
+          - {name: edit, icon: pencil, label: EditZ}
+          - {name: show, icon: info-circle, label: 'sHoW'}
         fields:
           - id
           - name
@@ -31,6 +31,22 @@ easy_admin:
           - funFact
           - { property: speciesCount, format: '%b' }
         sort: [name, ASC]
+      form:
+        fields:
+          - { property: id, type_options: { disabled: true }}
+          - name
+          - speciesCount
+          - { property: funFact, type: textarea }
+          - isPublished
+          - { property: firstDiscoveredAt, type_options: { widget: single_text }}
+          - subFamily
+          - genusScientists
+      new:
+        fields:
+          - -id
+      edit:
+        fields:
+          - {property: slug, help: 'Unique auto-generated value', type_options: { disabled: true }}
       search:
         fields: [name]
         help: ~
