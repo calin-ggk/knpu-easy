@@ -3,6 +3,8 @@ easy_admin:
 
   design:
     brand_color: '#819b9a'
+    templates:
+      field_id: admin/fields/_id.html.twig
 
   assets:
     css: ['css/custom_backend.css']
