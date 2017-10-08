@@ -28,6 +28,7 @@ easy_admin:
           - { property: firstDiscoveredAt, format: Y M, label: Discovered }
           - funFact
           - { property: speciesCount, format: '%b' }
+        sort: [name, ASC]
       search:
         fields: [name]
         help: ~
@@ -43,6 +44,7 @@ easy_admin:
           - { property: userAvatarFileName, type: image, label: Avatar, base_path: /images/ }
           - createdAt
           - genus
+        sort: [genus.name, ASC]
 
     SubFamily:
       class: AppBundle\Entity\SubFamily
@@ -59,3 +61,14 @@ easy_admin:
           - { property: isScientist, type: boolean }
           - fullName
           - { property: avatarUri, type: url }
+
+    GenusHorde:
+      class: AppBundle\Entity\Genus
+      label: HORDE of genuses !!!
+      list:
+        dql_filter: 'entity.speciesCount > 50000 and entity.isPublished = true'
+        sort: speciesCount
+        help: Run for your life !
+      search:
+        dql_filter: 'entity.speciesCount > 50000'
+
