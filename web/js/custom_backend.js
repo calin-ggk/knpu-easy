@@ -6,4 +6,9 @@ $(document).ready(function () {
         e.target.nextElementSibling.innerHTML = html;
     });
     $markdownInputs.trigger('keyup');
+
+    $('.js-delete-scientist').on('click', function(e) {
+        e.preventDefault();
+        alert('todo');
+    });
 });
