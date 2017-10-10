@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class GenusController extends Controller
@@ -142,5 +143,25 @@ class GenusController extends Controller
         $em->flush();
 
         return new Response(null, 204);
+    }
+
+    /**
+     * @Route("/genus/feed/", name="genus_feed")
+     * @param Request $request
+     * @return Response
+     */
+    public function feedGenus(Request $request)
+    {
+        $id = $request->query->get('id');
+        $genus = $this->getDoctrine()->getManager()->find(Genus::class, $id);
+        $menu = ['shrimp', 'clam', 'lobsters', 'dolphin'];
+        $meal = $menu[random_int(0, sizeof($menu) - 1)];
+        $this->addFlash('info', $genus->feed([$meal]));
+
+        return $this->redirectToRoute('easyadmin', [
+            'action' => 'show',
+            'entity' => 'Genus',
+            'id' => $id
+        ]);
     }
 }

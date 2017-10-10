@@ -59,6 +59,17 @@ easy_admin:
       edit:
         fields:
           - {property: slug, help: 'Unique auto-generated value', type_options: { disabled: true }}
+      show:
+        actions:
+          -
+            name: genus_feed
+            type: route
+            label: Feed genus
+            css_class: btn btn-info
+            icon: cutlery
+          -
+            name: 'changePublishedStatus'
+            css_class: 'btn'
       search:
         fields: [name]
         help: ~
