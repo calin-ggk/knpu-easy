@@ -41,25 +41,33 @@ easy_admin:
         sort: [name, ASC]
       form:
         fields:
-          - { property: id, type_options: { disabled: true }}
+          - { type: group, css_class: col-sm-6, label: Basic information }
           - name
           - speciesCount
-          - { property: funFact, type: textarea, css_class: js-markdown-input }
-          - isPublished
           - { property: firstDiscoveredAt, type_options: { widget: single_text }}
           - { property: subFamily, type: easyadmin_autocomplete }
+          - { type: section, label: Optional }
+          - isPublished
+          - { property: funFact, type: textarea, css_class: js-markdown-input }
+          - { type: group, css_class: col-sm-6, label: Studied by ...}
           -
             property: genusScientists
             type: text
             type_options:
               mapped: false
               attr: { class: 'js-genus-scientist-field' }
+          -
+            type: group
+            css_class: col-sm-6 new-row
+            label: Identification
+            icon: id-card-o
+            help: For administrators
+          - { property: id, type_options: { disabled: true }}
+          - {property: slug, help: 'Unique auto-generated value', type_options: { disabled: true }}
       new:
         fields:
           - -id
-      edit:
-        fields:
-          - {property: slug, help: 'Unique auto-generated value', type_options: { disabled: true }}
+          - -slug
       show:
         actions:
           -
@@ -106,11 +114,14 @@ easy_admin:
           - { property: avatarUri, type: url }
       form:
         fields:
-          - email
-          - isScientist
+          - { type: 'section', label: User details }
           - { property: fullName, type: text, help: First then last}
-#          - { property: avatarUri, type: image }
+          - {type: 'divider' }
           - { property: avatarUri }
+          - {type: section, label: Contact information, icon: phone }
+          - email
+          - {type: section, label: Education }
+          - isScientist
           - universityName
 
     GenusHorde:
