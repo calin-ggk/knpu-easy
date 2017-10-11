@@ -10,12 +10,42 @@ easy_admin:
       - easy_admin/_form_theme.html.twig
     menu:
       - { label: Dashboard, route: admin_dashboard, default: true }
-      - User
-      - Genus
-      - GenusHorde
-      - GenusNote
-      - SubFamily
-
+      - { label: Front end, route: app_genus_list }
+      - { entity: 'User', label: 'Users', icon: user }
+      -
+        label: Genus
+        children:
+          -
+            entity: 'Genus'
+            label: 'Pet genus'
+            icon: 'paw'
+            params:
+                action: 'show'
+                id: 2
+          - Genus
+          -
+            entity: Genus
+            label: Genuses (sorted by ID)
+            params:
+              sortField: id
+              sortDirection: DESC
+              pizza: delicious
+          - GenusHorde
+          - { label: Related }
+          - { entity: 'GenusNote', label: 'Notes', icon: sticky-note }
+          - { entity: 'SubFamily', label: 'Sub-Families', icon: '' }
+      -
+        label: 'Important stuff'
+        icon: 'exclamation'
+        children:
+          -
+              label: 'Silly kittens'
+              url: 'https://www.youtube.com/results?search_query=silly+kittens'
+              target: '_blank'
+          -
+              label: 'Wet cats'
+              url: 'http://www.boredpanda.com/funny-wet-cats/'
+              target: '_blank'
   assets:
     css:
       - 'css/custom_backend.css'
