@@ -18,7 +18,7 @@ easy_admin:
 
   list:
     title: List of %%entity_label%%
-    actions: ['show']
+    actions: ['show', 'export']
 
   entities:
     Genus:

@@ -40,6 +40,8 @@ class EasyAdminExtension extends \Twig_Extension
             unset($itemActions['edit']);
         }
 
+        unset($itemActions['export']);
+
         return $itemActions;
     }
 }
